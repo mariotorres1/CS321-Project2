@@ -7,8 +7,7 @@ import java.util.Arrays;
  */
 
 public class MaxHeap {
-	private static final int DEFAULT_CAPACITY = 10;
-
+	private static final int DEFAULT_CAPACITY = 15;
 	private Process[] heapArray;
 	private int rear;
 
@@ -28,6 +27,10 @@ public class MaxHeap {
 		rear = 0;
 	}
 	
+	/**
+	 * Build's a maxHeap from an array list of processes
+	 * @param processes - array list containing processes 
+	 */
 	public void buildMaxHeap(Process[] processes) {
 		heapArray = new Process[processes.length];
 		heapArray = processes;
@@ -43,15 +46,15 @@ public class MaxHeap {
 	 * @param index is the position in the heap to maxHeapifyUp from
 	 */
 	public void maxHeapifyUp(int index) {
-		while (index > 0 && heapArray[parent(index)].compareTo(heapArray[index]) == -1) {// except the root
+		while (index > 0 && heapArray[parent(index)].compareTo(heapArray[index]) == -1) {
 			exchange(index, parent(index));
 			index = parent(index);
 		}
 	}
 
 	/**
-	 * maxHeapify an array of processes
-	 * @param index is the position in the heap to maxHeapifyDown from
+	 * maxHeapify from a given index position 
+	 * @param index is the position in the heap to maxHeapify from
 	 */
 	public void maxHeapify(int index) {
 		int left = leftChild(index);
@@ -81,7 +84,7 @@ public class MaxHeap {
 	}
 
 	/**
-	 * Extracts the root node of the heap.
+	 * Extracts and returns the root node of the heap.
 	 */
 	public Process maxHeapExtract() {
 		Process returnProcess = heapArray[0];
@@ -100,25 +103,25 @@ public class MaxHeap {
 	}
 
 	/**
-	 * Deletes a node from the heap
+	 * Deletes and returns a node from the heap
 	 * @param index is the node position to be deleted
 	 */
 	public Process maxHeapDelete(int index) {
 		Process returnProcess = heapArray[index];
-		boolean higher = false;
-		boolean decrease = false;
+		boolean bigger = false;
+		boolean smaller = false;
 		if (returnProcess.compareTo(heapArray[rear - 1]) == 1) {
-			higher = true;
+			smaller = true;
 		}
 		if (returnProcess.compareTo(heapArray[rear - 1]) == -1) {
-			decrease = true;
+			bigger = true;
 		}
 		exchange(index, rear - 1);
 		rear--;
-		if (higher) {
+		if (smaller) {
 			maxHeapify(index);
 		}
-		if (decrease) {
+		if (bigger) {
 			maxHeapifyUp(index);
 		}
 		return returnProcess;
@@ -194,8 +197,11 @@ public class MaxHeap {
 		heapArray[second] = tmpProcess;
 	}
 	
-	// Method 4
-    // Returning true of given node is leaf
+	/**
+	 * Returns if the index position is a leaf of the heap
+	 * @param index - position to check 
+	 * @return true if a leaf and false if not
+	 */
     private boolean isLeaf(int index)
     {
         if (index > (size() / 2) && index <= size()) {
@@ -204,15 +210,14 @@ public class MaxHeap {
         return false;
     }
 	
-	// Method 8
-    // To display heap
+	/**
+	 * Prints the parent, left child, and right child starting at the root and working down
+	 * Used to test maxHeapify in Test.java
+	 */
     public void print() {
         for (int i = 0; i < rear / 2; i++) {
         	if(!isLeaf(i)) {
-        		System.out.print(
-        				" PARENT : " + heapArray[i]
-        			  + " LEFT CHILD : " + heapArray[2 * i + 1]
-        			  + " RIGHT CHILD : " + heapArray[2 * i + 2]);
+        		System.out.print("PARENT : " + heapArray[i] + " LEFT CHILD : " + heapArray[2 * i + 1] + " RIGHT CHILD : " + heapArray[2 * i + 2]);
         		System.out.println();
         	}
         }

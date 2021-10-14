@@ -43,7 +43,7 @@ public class ProcessGenerator implements ProcessGeneratorInterface {
 	}
 	
 	/**
-	 * Generates new process
+	 * Generates and returns a new process
 	 */
 	public Process getNewProcess(int currentTime, int maxProcessTime, int maxLevel) {
 		int priority = rand.nextInt(maxLevel) + 1;

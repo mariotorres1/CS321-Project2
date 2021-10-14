@@ -45,6 +45,8 @@ public class Test {
 		list.print();
 		Process result = list.heapMaximum();
 		Process expectedResult = d;
+		System.out.println(result.toString());
+		System.out.println(expectedResult.toString());
 		if (result.compareTo(expectedResult) == 0) {
 			return true;
 		} else {
@@ -74,6 +76,8 @@ public class Test {
 		list.print();
 		Process result = list.heapMaximum();
 		Process expectedResult = d;
+		System.out.println(result.toString());
+		System.out.println(expectedResult.toString());
 		if (result.compareTo(expectedResult) == 0) {
 			return true;
 		} else {
@@ -102,6 +106,8 @@ public class Test {
 		list.print();
 		Process result = list.heapMaximum();
 		Process expectedResult = j;
+		System.out.println(result.toString());
+		System.out.println(expectedResult.toString());
 		if (result.compareTo(expectedResult) == 0) {
 			return true;
 		} else {

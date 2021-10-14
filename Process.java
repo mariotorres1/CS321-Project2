@@ -1,6 +1,6 @@
 
 /**
- * Creating and adjusting a process
+ * Creates a process and implements methods to adjust a process
  * @author Mario Torres
  */
 public class Process implements ProcessInterface, Comparable<Process> {
@@ -105,7 +105,7 @@ public class Process implements ProcessInterface, Comparable<Process> {
 	}
 
 	/**
-	 * Compares two processes priority
+	 * Compares two processes priority, if equal priority, compares arrival time
 	 * @param process - process to compare against
 	 */
 	public int compareTo(Process process) {
@@ -125,8 +125,9 @@ public class Process implements ProcessInterface, Comparable<Process> {
 	}
 	
 	/**
-	 * Prints and returns the process and it's key values 
-	 * @return 
+	 * Prints and returns the process and it's key values
+	 * Used to help Test.java 
+	 * @return a string of priority level, remaining time and arrival time of a process
 	 */
 	public String toString() {
 		int priorityLevel = this.priorityLevel;
