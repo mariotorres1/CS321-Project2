@@ -73,6 +73,3 @@ other classmates and tutors regarding questions I had for this
 project.
 
 ----------
-This README template is using Markdown. To preview your README output,
-you can copy your file contents to a Markdown editor/previewer such
-as [https://stackedit.io/editor](https://stackedit.io/editor).
